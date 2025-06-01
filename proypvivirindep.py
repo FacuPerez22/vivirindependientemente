@@ -14,16 +14,19 @@ if edad >= 18 and ingresos > 1000:
     if padres == "si":
         print("Puedes considerar esto en tu presupuesto. servira para imprevistos o ahorros")    
         ayuda_padres = float(input("¿Cuánto dinero te aportan tus padres mensualmente? "))
-    elif padres == "no":
+    else:
+        padres == "no"
         print("Tus padres 'NO' te ayudan, entonces debes planificar bien tus gastos, que no superen tus ingreso!.")
     beca = input("¿Tienes alguna beca? (si/no): ").lower()
     if beca == "si":
         print("es un apoyo adicional bastamte importante. ")
         ayuda_beca = float(input("¿Cuánto dinero recibes mensualmente por la beca? "))
-    if beca == "no":
+    else:
+        beca == "no"
         print("No tienes beca, por lo tanto no tenes un ingreso extra.\n")
 else:
     print("Lo siento, no puedes independizarte. Debes tener al menos 18 años y un ingreso mensual mayor a 1000.\n")        
+
 ingresos_totales = (ingresos + ayuda_padres + ayuda_beca)
 
 print(f"\n Tu ingreso total es: {ingresos_totales} ahora {nombre} si y solo si los gastos no superan los ingresos podras ser independiente \n ")
@@ -54,7 +57,7 @@ elif departamento == "alquilo":
             print("El alquiler en San Martín no debe superar el 50% de tus ingresos, revisa tu presupuesto.")
         else:
             print(f"{nombre} el alquiler en San Martín es adecuado, pagas {valor_alquiler} que no supera el 50% de tus ingresos totales de: {ingresos_totales}.")
-    if departamento == "comparto":
+    elif departamento == "comparto":
         print("Compartir gastos puede ayudarte a ahorrar dinero.")
         valor_alquiler = float(input("¿Cuánto pagas de alquiler mensualmente al compartir gastos? "))
         if valor_alquiler > ingresos_totales * 0.5:
@@ -63,16 +66,17 @@ elif departamento == "alquilo":
             print(f"{nombre} el alquiler al compartir gastos es adecuado, pagas {valor_alquiler} que no supera el 50% de tus ingresos totales de: {ingresos_totales}.")
     else:
         print("Barrio no reconocido, asegúrate bien de investigar los costos.\n")
-
+else:
+    print("'NO ES UNA OPCION VALIDA'")
 gastos_fijos = float(input(f" vamos ahora por los gastos fijos, hablamos de servicios e impuestos, que no pueden superar el 20% de tu ingresos {ingresos_totales}  "))
 if gastos_fijos > ingresos_totales * 0.2:
-    print("Tus gastos fijos son demasiado altos, revisa tu presupuesto.")
+    print("Tus gastos 'FIJOS' son demasiado altos, revisa tu presupuesto.")
 else:
-    print(f"Los gastos fijos son adecuados, pagas {gastos_fijos} que no supera el 20% de tus ingresos totales de: {ingresos_totales}.")
+    print(f"Los gastos 'FIJOS son adecuados, pagas {gastos_fijos} que no supera el 20% de tus ingresos totales de: {ingresos_totales}.")
 
 gastos_no_fijos = float(input("Los gastos no fijos, como comida, transporte, ropa, salud y entretenimiento. ¿Cuánto gastas mensualmente en estos conceptos no debe superar el 30% de los ingresos? "))
 if gastos_no_fijos > ingresos_totales * 0.3:
-    print("Tus gastos no fijos son demasiado altos, revisa tu presupuesto.")
+    print("Tus gastos 'NO FIJOS' son demasiado altos, revisa tu presupuesto.")
 else:
     print(f"Los gastos 'NO FIJOS' son adecuados, pagas {gastos_no_fijos} que no supera el 30% de tus ingresos totales de: {ingresos_totales}.")
 
@@ -80,6 +84,8 @@ ahorro = float(input("¿Qué porcentaje de tu sueldo quieres destinar al ahorro?
 ahorro = round(ingresos_totales * (ahorro / 100), 2)
 if ahorro > ingresos_totales * 0.1:
     print(f"Has decidido ahorrar {ahorro}  de tus ingresos totales.  ")
+else:
+    print(f"tu ahorro {ahorro} es significativo" )
 
 tiempo_ocio = int(input("¿Cuántas horas a la semana dedicas al ocio?  "))
 if tiempo_ocio < 10:
@@ -88,9 +94,10 @@ else:
     tiempo_ocio >= 15
     print("¡¡No seas tan bagoneta!!!!.")
     
-    gastos_totales = (gastos_fijos + gastos_no_fijos + valor_alquiler + ahorro)
+gastos_totales = (gastos_fijos + gastos_no_fijos + valor_alquiler + ahorro)
+
 print("\n Vamos a revisar tus gastos totales y ver si son adecuados para tu situación financiera.\n")
-if gastos_totales > ingresos_totales:
+if gastos_totales > ingresos_totales and ingresos_totales != gastos_totales:
     print("Tus gastos totales superan tus ingresos, debes ajustar tu presupuesto.")
 else:
     print(f"Tus gastos totales son adecuados, pagas {gastos_totales} que no supera tus ingresos totales de: {ingresos_totales}.")
